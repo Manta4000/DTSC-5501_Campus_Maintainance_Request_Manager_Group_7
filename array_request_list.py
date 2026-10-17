@@ -4,6 +4,7 @@ class ArrayRequestList:
         self.data = [None] * capacity
         self.size = 0 
         self.capacity = capacity
+
     def push(self, request):
         #checks for duplicates before pushing a new request
         if self.findById(request.request_id) is not None:
@@ -50,7 +51,38 @@ class ArrayRequestList:
         self.size += 1
 
     def inserAt(self, index, request):
+        #checks if index is not negative or too big 
+        if index < 0 or index > self.size:
+            raise IndexError("Index Error")
+        #check for duplicates 
+        if self.findById(request.request_id) is not None:
+            raise ValueError("Duplicate Id")
+        #will check and resize if used storgae is equal to capacity
+        if self.size == self.capacity:
+            self.resize()
 
-    def removeAt(self):
+        i = self.size
+        #shifting to the right by one when inserting 
+        while i > index:
+            self.data[i] = self.data[i - 1]
+            i-=1
+        self.data[index] = request
+        self.size += 1
 
-    def getAt(self):
+    def removeAt(self, index):
+        if index < 0 or index >= self.size:
+            raise IndexError("Index Error")
+        removed = self.data[index]
+
+        i = index
+
+        while i < self.size - 1:
+            self.data[i] = self.data[i+1]
+            i += 1
+        self.data[self.size - 1] = None
+        self.size -= 1
+
+    def getAt(self, index):
+        if index < 0 or index >= self.size:
+            raise IndexError("Index Error")
+        return self.data
