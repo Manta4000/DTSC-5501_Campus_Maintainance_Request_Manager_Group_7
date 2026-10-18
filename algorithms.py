@@ -3,7 +3,7 @@
 ### Test Data Set
 
 test_request_ids = [1000, 1001, 1010, 1011, 1110, 1002, 1005, 4501, 1004, 3105, 1007, 4532, 1009]
-test_priority = [1, 3, 4 , 1, 2, 3, 4, 1, 3, 2, 4, 1, 2]
+test_priority = [1, 3, 4, 1, 2, 3, 4, 1, 3, 2, 4, 1, 2]
 def linear_search(request_id, position):
     for i in range(len(request_id)):
         if request_id[i] == position:
@@ -16,7 +16,6 @@ linear_search_result = linear_search(test_request_ids, 1005)
 print(linear_search_result)
 
 ###
-
 
 ### Binary Search Algorithm
 
