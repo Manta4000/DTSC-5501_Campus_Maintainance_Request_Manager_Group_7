@@ -134,7 +134,7 @@ class LinkedRequestList:
         current = self.head
 
         while current is not None:
-            result += str(current.data) + " -> "
+            result += str(current.data) + " - "
             current = current.next
 
         result += "None"
