@@ -179,7 +179,7 @@ def coprime_multiplier(size):
 def make_benchmark_collection(collection_type, size, order="sorted"):
     multiplier = coprime_multiplier(size)
     if collection_type is ArrayRequestList:
-        collection = ArrayRequestList(size)
+        collection = ArrayRequestList(size + 1)
         for index in range(size):
             request_id = request_id_for(order, index, size, multiplier)
             collection.data[index] = make_request(request_id, index)
@@ -304,6 +304,7 @@ def benchmark_insertion_sorts(size, collection_type, collection_name):
 
 def run_part_g():
     print("Part G performance results (single timed operation; setup excluded)")
+    print("Array mutation tests reserve one free slot to avoid timing a resize.")
     print("     n | list    | operation                          | elapsed")
     print("-------+---------+------------------------------------+----------------")
     for size in PART_G_SIZES:

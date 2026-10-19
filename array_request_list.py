@@ -19,8 +19,7 @@ class ArrayRequestList:
         self.size += 1
 
     def resize(self):
-        #make new capacity 2 times more
-        newCapacity = self.capacity * 2 
+        newCapacity = self.capacity * 2
         newData = [None] * newCapacity
         #for loop and copies to new set
         for i in range(self.size):
@@ -50,8 +49,13 @@ class ArrayRequestList:
         self.data[self.size] = request
         self.size += 1
 
-    def inserAt(self, index, request):
-        #checks if index is not negative or too big 
+    def inserttAt(self, index, request):
+        if not isinstance(index, int) or isinstance(index, bool):
+            raise TypeError("Index must be an integer")
+        #type error request
+        if type(index) != int:
+            raise TypeError("Must be an int")
+
         if index < 0 or index > self.size:
             #is index valid?
             raise IndexError("Index Error")
@@ -72,6 +76,10 @@ class ArrayRequestList:
         return self.insertAt(index, request)
 
     def removeAt(self, index):
+        #is int?
+        if type(index) != int:
+            raise TypeError("Index not int")
+        #range
         if index < 0 or index >= self.size:
             raise IndexError("Index Error")
         #what was removed to be recalled 
@@ -83,11 +91,23 @@ class ArrayRequestList:
         # once shift removes last copy 
         self.data[self.size - 1] = None
         self.size -= 1
-        return removed
 
         return removed
 
     def getAt(self, index):
+        #is it an int?
+        if type(index) != int:
+            raise TypeError("Index not int")
+        # cant be negative and must be in range
         if index < 0 or index >= self.size:
             raise IndexError("Index Error")
-        return self.data
+
+        return self.data[index]
+
+    def __str__(self):
+        result = ""
+        # grab data and add to lsit and make it str and readable 
+        for i in range(self.size):
+            result += str(self.data[i]) + " -> "
+
+        return "Head" + result + "None"
