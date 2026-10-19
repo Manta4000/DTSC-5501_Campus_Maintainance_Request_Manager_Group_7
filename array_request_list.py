@@ -21,7 +21,7 @@ class ArrayRequestList:
 
     def resize(self):
         #make new capacity 2 times more
-        newCapacity = self.capacity * 2 
+        newCapacity = max(1, self.capacity * 2)
         newData = [None] * newCapacity
         #loop for everything in array and copy over data when resizeing 
         for i in range(self.size):
@@ -50,7 +50,9 @@ class ArrayRequestList:
         self.data[self.size] = request
         self.size += 1
 
-    def inserAt(self, index, request):
+    def insertAt(self, index, request):
+        if not isinstance(index, int) or isinstance(index, bool):
+            raise TypeError("Index must be an integer")
         #checks if index is not negative or too big 
         if index < 0 or index > self.size:
             raise IndexError("Index Error")
@@ -69,7 +71,12 @@ class ArrayRequestList:
         self.data[index] = request
         self.size += 1
 
+    def inserAt(self, index, request):
+        return self.insertAt(index, request)
+
     def removeAt(self, index):
+        if not isinstance(index, int) or isinstance(index, bool):
+            raise TypeError("Index must be an integer")
         if index < 0 or index >= self.size:
             raise IndexError("Index Error")
         removed = self.data[index]
@@ -81,8 +88,11 @@ class ArrayRequestList:
             i += 1
         self.data[self.size - 1] = None
         self.size -= 1
+        return removed
 
     def getAt(self, index):
+        if not isinstance(index, int) or isinstance(index, bool):
+            raise TypeError("Index must be an integer")
         if index < 0 or index >= self.size:
             raise IndexError("Index Error")
-        return self.data
+        return self.data[index]
