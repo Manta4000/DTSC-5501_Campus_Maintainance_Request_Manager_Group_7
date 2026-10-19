@@ -26,6 +26,7 @@ class LinkedRequestList:
         #cheks if empty to make sure we can move thorugh a node
         if self.head is None:
             self.head = newNode
+            return
         else:
             current = self.head
         #last node

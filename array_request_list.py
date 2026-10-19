@@ -19,7 +19,7 @@ class ArrayRequestList:
         self.size += 1
 
     def resize(self):
-        newCapacity = self.capacity * 2
+        newCapacity = max(1, self.capacity * 2)
         newData = [None] * newCapacity
         #for loop and copies to new set
         for i in range(self.size):
@@ -49,7 +49,7 @@ class ArrayRequestList:
         self.data[self.size] = request
         self.size += 1
 
-    def inserttAt(self, index, request):
+    def insertAt(self, index, request):
         if not isinstance(index, int) or isinstance(index, bool):
             raise TypeError("Index must be an integer")
         #type error request
@@ -71,6 +71,9 @@ class ArrayRequestList:
         
         self.data[index] = request
         self.size += 1
+
+    def inserAt(self, index, request):
+        return self.insertAt(index, request)
 
     def inserAt(self, index, request):
         return self.insertAt(index, request)
