@@ -1,7 +1,6 @@
 
 # DTSC-5501_Campus_Maintainance_Request_Manager_Group_7
-#
-#
+
 Members: Joseph Gentile (joge13030) and Timothy Williams (tiwi6506)
 
 Instructions: To use this package you must run commands via a directory attached to the project or directly create run the project.
