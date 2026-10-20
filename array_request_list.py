@@ -75,9 +75,6 @@ class ArrayRequestList:
     def inserAt(self, index, request):
         return self.insertAt(index, request)
 
-    def inserAt(self, index, request):
-        return self.insertAt(index, request)
-
     def removeAt(self, index):
         #is int?
         if type(index) != int:
