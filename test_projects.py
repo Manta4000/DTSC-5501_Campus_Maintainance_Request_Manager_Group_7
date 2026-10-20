@@ -1,6 +1,11 @@
 """Reproducible operation tests for the campus maintenance request lists.
 """
 
+### Prediction
+### At n=25,000 vs. 5,000: constant-time operations should be about 1x; linear about 5x; quadratic about 25x.
+### Arrays should win middle reads/search; linked lists should win front edits. Part K is append-heavy, so predict array wins.
+### More front insertions/removals could shift the workload toward linked lists.
+
 import unittest
 import time
 from types import SimpleNamespace
